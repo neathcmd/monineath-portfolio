@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Sal Monineath's portfolio showcasing web development and graphic design projects."
+    />
+    <meta property="og:title" content="Sal Monineath - Portfolio" />
+    <meta
+      property="og:description"
+      content="Explore my web development and graphic design projects."
+    />
+    <meta property="og:image" content="path_to_your_preview_image.jpg" />
+    <meta property="og:url" content="https://your-portfolio-url.com" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <title>Sal Monineath - Portfolio</title>
+    <!-- style-css -->
+    <link rel="stylesheet" href="style.css" />
+    <!-- animation-css -->
+    <link rel="stylesheet" href="animation.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <!-- responsive-css -->
+    <link rel="stylesheet" href="responsive.css" />
+    <!--google fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+
+      /* Loading Screen */
+      #loading-screen {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #1a1a1a;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+      }
+
+      /* Loader Animation */
+      .loader {
+        width: 50px;
+        height: 50px;
+        border: 5px solid #f3f3f3;
+        border-top: 5px solid #3498db;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+      }
+
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Loading Screen -->
+    <div id="loading-screen">
+      <div class="loader"></div>
+    </div>
+    <div class="progress-bar"></div>
+    <header>
+      <!-- Navigation -->
+      <nav class="navbar" id="nav">
+        <div class="nav-container">
+          <a href="./index.html" class="logo">Sal Monineath</a>
+          <button class="menu-btn" id="toggle">☰</button>
+          <ul class="nav-links">
+            <li><a href="#home" class="nav-link active">Home</a></li>
+            <li><a href="#about" class="nav-link">About</a></li>
+            <li class="dropdown">
+              <a href="#skills" class="nav-link dropdown-toggle">Skills</a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a href="#education" class="dropdown-item">Education</a>
+                </li>
+                <li>
+                  <a href="#experience" class="dropdown-item">Experience</a>
+                </li>
+              </ul>
+            </li>
+            <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
+            <li><a href="#blogs" class="nav-link">Blogs</a></li>
+            <li><a href="#contact" class="nav-link">Contact</a></li>
+          </ul>
+          <div class="mode-toggle-container">
+            <button id="mode-toggle" class="mode-toggle">
+              <div class="toggle-track">
+                <div class="toggle-sun"></div>
+                <div class="toggle-moon"></div>
+              </div>
+            </button>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+      <div class="hero-content">
+        <img
+          src="./img/hero.jpg"
+          alt="Sal Monineath Profile Picture"
+          class="profile-photo"
+        />
+        <h1>Sal Monineath</h1>
+        <p>Web Developer & Graphic Designer</p>
+        <div class="btn-group">
+          <a href="#contact" class="btn btn-primary">Contact Me</a>
+          <a href="#portfolio" class="btn btn-secondary">View Work</a>
+        </div>
+        <div class="social-icons">
+          <a
+            href="https://www.facebook.com/profile.php?id=100076469475604&mibextid=JRoKGi"
+            target="_blank"
+            ><i class="fa-brands fa-facebook"></i
+          ></a>
+          <a href="https://t.me/dex593" target="_blank"
+            ><i class="fa-brands fa-telegram"></i
+          ></a>
+          <a
+            href="https://www.linkedin.com/in/sol-monineath-95b3ba345?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+            target="_blank"
+            ><i class="fa-brands fa-linkedin"></i
+          ></a>
+          <a href="https://github.com/neathcmd" target="_blank"
+            ><i class="fa-brands fa-github"></i
+          ></a>
+          <a href="https://discord.com/channels/@me" target="_blank"
+            ><i class="fa-brands fa-discord"></i
+          ></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+      <div class="about-content">
+        <div class="about-text">
+          <h2>About Me</h2>
+          <p class="short-text">
+            I'm Sal Monineath, a passionate web developer and designer...
+          </p>
+          <div class="full-text">
+            <p>
+              I'm Sal Monineath, a passionate web developer and designer. I
+              specialize in front-end development, UI/UX design, and building
+              modern web applications. I love creating user-centric designs and
+              developing solutions that meet both aesthetic and functional
+              requirements. In my free time, I enjoy exploring new web
+              technologies and working on personal projects to improve my
+              skills.
+            </p>
+          </div>
+          <button class="read-more-btn" id="read-more-btn">Read More</button>
+        </div>
+        <img
+          src="./img/about.jpg"
+          alt="Sal Monineath Profile"
+          class="about-photo"
+        />
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+      <h2>My Skills</h2>
+      <div class="skills-container">
+        <div class="skill-item">
+          <i class="fab fa-html5"></i>
+          <span>HTML5</span>
+        </div>
+        <div class="skill-item">
+          <i class="fab fa-css3-alt"></i>
+          <span>CSS3</span>
+        </div>
+        <div class="skill-item">
+          <i class="fab fa-js"></i>
+          <span>JavaScript</span>
+        </div>
+        <div class="skill-item">
+          <i class="fab fa-bootstrap"></i>
+          <span>Bootstrap</span>
+        </div>
+        <!-- <div class="skill-item">
+          <i class="fab fa-react"></i>
+          <span>React</span>
+        </div> -->
+      </div>
+    </section>
+
+    <!-- Education section -->
+    <section id="education" class="tree-section">
+      <h2 class="title">Education</h2>
+      <div class="experience-container">
+        <div class="timeline">
+          <div class="timeline-item" id="top" style="text-align: right">
+            <div class="year">2024-2025</div>
+            <div class="content" style="text-align: right">
+              <p>Study High school</p>
+              <p>at Samdech Ov High School</p>
+            </div>
+          </div>
+          <div class="timeline-item right" id="middle">
+            <div class="year" style="text-align: left">2023-2024</div>
+            <div class="content" style="text-align: left">
+              <p>High school diploma</p>
+              <p>at Samdech Ov High School</p>
+            </div>
+          </div>
+          <div class="timeline-item" id="bottom">
+            <div class="year" style="text-align: right">2021-2023</div>
+            <div class="content" style="text-align: right">
+              <p>Study microsoft office and graphic designer</p>
+              <p>at Bee international school</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience" class="tree-section">
+      <h2 class="title">Experience</h2>
+      <div class="experience-container">
+        <div class="timeline">
+          <div class="timeline-item" id="top-content" style="text-align: right">
+            <div class="year">2025</div>
+            <div class="content" style="text-align: right">
+              <p>Front Learning web Development</p>
+              <p>at clouds of technology</p>
+            </div>
+          </div>
+          <div class="timeline-item right" id="middle-content">
+            <div class="year" style="text-align: left">2024-2025</div>
+            <div class="content" style="text-align: left">
+              <p>Senior Writer at House of Youth</p>
+              <p>Federation of Cambodia</p>
+            </div>
+          </div>
+          <div class="timeline-item" id="bottom-content">
+            <div class="year" style="text-align: right">2023-2024</div>
+            <div class="content" style="text-align: right">
+              <p>Graphic Designer and Writes</p>
+              <p>Federation of Cambodia</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="portfolio">
+      <h2>Portfolio</h2>
+      <div class="portfolio-grid">
+        <div class="portfolio-item">
+          <h3>Ebike-Website</h3>
+          <p>This project is an E-commerce webside.</p>
+          <a
+            href="https://neathcmd.github.io/ebike-webiste/Index.html"
+            class="portfolio-link"
+            target="_blank"
+            >View Project →</a
+          >
+        </div>
+        <div class="portfolio-item">
+          <h3>Project Two</h3>
+          <p>Description of project two.</p>
+          <a href="#" class="portfolio-link">View Project →</a>
+        </div>
+        <div class="portfolio-item">
+          <h3>Project Three</h3>
+          <p>Description of project three.</p>
+          <a href="#" class="portfolio-link">View Project →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Blogs Section -->
+    <section id="blogs" class="blogs">
+      <h2>Latest Blogs</h2>
+      <div class="blog-posts">
+        <div class="blog-card">
+          <h3>Understanding Web Accessibility</h3>
+          <p>
+            Accessibility is an important part of web development. In this post,
+            I discuss how to build accessible websites and the tools you can use
+            to test them.
+          </p>
+          <a href="#" class="blog-link">Read More →</a>
+        </div>
+        <div class="blog-card">
+          <h3>Getting Started with React</h3>
+          <p>
+            React has become one of the most popular front-end frameworks. This
+            post will help beginners understand how to get started with React
+            and build your first app.
+          </p>
+          <a href="#" class="blog-link">Read More →</a>
+        </div>
+        <div class="blog-card">
+          <h3>Designing for Mobile First</h3>
+          <p>
+            Mobile-first design is essential in today's web development. In this
+            post, I explore strategies to build responsive websites with
+            mobile-first principles.
+          </p>
+          <a href="#" class="blog-link">Read More →</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact">
+      <div class="contact-content">
+        <h2 style="margin-bottom: 1rem">Get in touch</h2>
+        <div class="contact-container">
+          <!-- Contact Info -->
+          <div class="contact-info">
+            <div class="info-card">
+              <h3>Contact me</h3>
+              <div class="info-item">
+                <i class="fas fa-envelope"></i>
+                <p>monrneath@gmail.com</p>
+              </div>
+              <div class="info-item">
+                <i class="fas fa-phone"></i>
+                <p>+855 882 906 535</p>
+              </div>
+              <div class="info-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <p>
+                  Trea Village, Sangkat Steung Meanchey, Khan Meanchey, Phnom
+                  Penh
+                </p>
+              </div>
+            </div>
+          </div>
+          <!-- Contact Form -->
+          <div class="contact-form">
+            <form action="#">
+              <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" placeholder="Your name" required />
+              </div>
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input
+                  type="email"
+                  id="email"
+                  placeholder="Your email"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="message">Message</label>
+                <textarea
+                  id="message"
+                  placeholder="Your message"
+                  required
+                ></textarea>
+              </div>
+              <button type="submit">Send</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="social-links">
+        <a
+          href="https://www.facebook.com/profile.php?id=100076469475604&mibextid=JRoKGi"
+          target="_blank"
+          class="social-link"
+        >
+          <i class="fab fa-facebook"></i>
+        </a>
+        <a
+          href="https://discord.com/channels/@me"
+          target="_blank"
+          class="social-link"
+        >
+          <i class="fab fa-discord"></i>
+        </a>
+        <a
+          href="https://www.linkedin.com/in/sol-monineath-95b3ba345?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+          target="_blank"
+          class="social-link"
+        >
+          <i class="fab fa-linkedin"></i>
+        </a>
+        <a href="https://t.me/dex593" target="_blank" class="social-link">
+          <i class="fab fa-telegram"></i>
+        </a>
+        <a
+          href="https://github.com/neathcmd"
+          target="_blank"
+          class="social-link"
+        >
+          <i class="fab fa-github"></i>
+        </a>
+      </div>
+
+      <div class="projects-section">
+        <p class="projects-title">Personal Projects:</p>
+        <div class="project-links">
+          <a
+            href="https://neathcmd.github.io/Personal-Portfolio/"
+            class="project-link"
+            target="_blank"
+            >Personal Portfolio Website</a
+          >
+          <a href="#" class="project-link">PHP Development</a>
+        </div>
+      </div>
+
+      <hr class="footer-divider" />
+
+      <div class="nav-footer">
+        <nav>
+          <ul class="nav-links">
+            <li><a href="#home" class="nav-links">Home</a></li>
+            <li><a href="#about" class="nav-links">About</a></li>
+            <li><a href="#skills" class="nav-links">Skills</a></li>
+            <li><a href="#portfolio" class="nav-links">Portfolio</a></li>
+            <li><a href="#blogs" class="nav-links">Blogs</a></li>
+            <li><a href="#contact" class="nav-links">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="footer-bottom">
+        <h3>Sal Monineath</h3>
+        <p class="rights">All Rights Reserved.</p>
+      </div>
+    </footer>
+    <script src="main.js"></script>
+  </body>
+</html>
+
+<!-- footer-nav-invisinble-on-small-screen -->
+<style>
+  @media (max-width: 768px) {
+    .footer-divider,
+    .nav-footer {
+      display: none;
+    }
+  }
+</style>
+
+<!-- skill-style-css -->
+<style>
+  .skills {
+    padding: 6rem 2rem;
+    background: rgba(255, 255, 255, 0.03);
+    text-align: center;
+  }
+
+  .skills h2 {
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: #fff;
+  }
+
+  .skills-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 3rem;
+  }
+
+  .skill-item {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  .skill-item i {
+    font-size: 4rem;
+    color: #3b82f6;
+    transition: all 0.3s ease;
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .skill-item:hover i {
+    transform: scale(1.1);
+    color: #60a5fa;
+  }
+
+  .skill-item span {
+    font-size: 1.2rem;
+    color: #9ca3af;
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeOutDown {
+    from {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    to {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+  }
+
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  /* Mobile Responsive */
+  @media (max-width: 768px) {
+    .skills h2 {
+      font-size: 2rem;
+    }
+
+    .skills-container {
+      gap: 2rem;
+    }
+
+    .skill-item i {
+      font-size: 3rem;
+    }
+
+    .skill-item span {
+      font-size: 1rem;
+    }
+  }
+</style>

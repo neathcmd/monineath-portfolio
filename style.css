@@ -1,0 +1,1332 @@
+@import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+/* Reset and base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Fira Code", serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
+body {
+  background-color: #111827;
+  color: #fff;
+  line-height: 1.6;
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
+:root {
+  --header-height: 80px;
+}
+
+section {
+  scroll-margin-top: var(--header-height);
+}
+
+/* Progress Bar Styles */
+.progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 5px;
+  width: 0;
+  background-color: #4caf50; /* Customize the color */
+  z-index: 1000; /* Make sure it appears on top of other elements */
+  transition: width 0.25s ease; /* Smooth animation */
+}
+
+/* Navigation */
+.navbar {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  background: rgba(17, 24, 39, 0.95);
+  backdrop-filter: blur(8px);
+  padding: 1rem 0;
+  z-index: 100;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.212);
+}
+
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #3b82f6;
+  text-decoration: none;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.logo:hover {
+  color: #60a5fa;
+}
+
+/* Underline animation for the logo */
+.logo::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background-color: #3b82f6;
+  transition: width 0.3s ease, left 0.3s ease;
+  transform: translateX(-50%);
+}
+
+.logo:hover::after {
+  width: 100%;
+  left: 50%;
+}
+
+.nav-links {
+  font-size: 1.1rem;
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+
+.nav-links a {
+  color: #fff;
+  text-decoration: none;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+/* Underline animation */
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background-color: #3b82f6;
+  transition: width 0.3s ease, left 0.3s ease;
+  transform: translateX(-50%);
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+  left: 50%;
+}
+
+.nav-links a:hover {
+  color: #3b82f6;
+}
+
+/* Active state */
+.nav-links a.active {
+  color: #3b82f6;
+}
+
+.nav-links a.active::after {
+  width: 100%;
+  left: 50%;
+}
+
+.menu-btn {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+/* Dropdown menu styles */
+.dropdown {
+  position: relative;
+}
+
+.dropdown-toggle {
+  cursor: pointer;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: rgba(17, 24, 39, 0.95);
+  border-radius: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 0.5rem 0;
+  list-style: none;
+}
+
+.dropdown-menu .dropdown-item {
+  padding: 0.5rem 1rem;
+  color: #fff;
+  text-decoration: none;
+  display: block;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.dropdown-menu .dropdown-item:hover {
+  background: #3b82f6;
+  color: #fff;
+}
+
+/* Show dropdown menu on hover */
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+/* Active state for dropdown parent */
+.nav-links a.active,
+.dropdown-menu .dropdown-item.active {
+  color: #3b82f6;
+}
+
+.nav-links a.active::after,
+.dropdown-menu .dropdown-item.active::after {
+  width: 100%;
+  left: 50%;
+}
+
+/* Active dropdown item background */
+.dropdown-menu .dropdown-item.active {
+  background: #3b82f6;
+  color: #fff;
+}
+
+/* Hero Section */
+.hero {
+  margin-top: 2rem;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6rem 2rem;
+  text-align: center;
+  flex-direction: column;
+  opacity: 0;
+  transform: translateX(-50px);
+  transition: all 0.6s ease;
+}
+
+.hero-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  margin: 0.5rem 0 1rem;
+  animation: fadeIn 1s ease;
+}
+
+.hero p {
+  font-size: 1.3rem;
+  color: #9ca3af;
+  margin: 0.5rem 0 2rem;
+  animation: fadeIn 1s ease 0.2s both;
+}
+
+.btn-group {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-bottom: 2rem;
+  animation: fadeIn 1s ease 0.4s both;
+}
+
+.btn {
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.btn-primary {
+  background: #3b82f6;
+  color: white;
+}
+
+.btn-primary:hover {
+  background: #2563eb;
+}
+
+.btn-secondary {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: white;
+}
+
+.btn-secondary:hover {
+  border-color: #3b82f6;
+}
+
+/* hero icon */
+.social-icons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.social-icons a i {
+  color: #fff;
+  font-size: 1.5rem;
+  padding: 10px;
+  transition: all 0.3s ease;
+}
+
+.social-icons a i:hover {
+  color: #2980b9;
+  transform: scale(1.08);
+}
+
+/* Profile Image */
+.profile-photo {
+  cursor: pointer;
+  width: 170px;
+  height: 170px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0 auto 1rem;
+  border: 3px solid #3b82f6;
+  opacity: 0; /* Initially hidden */
+  transform: scale(0.8); /* Initially smaller */
+  transition: transform 0.6s ease, opacity 0.6s ease; /* Smooth transition */
+}
+
+.profile-photo:hover {
+  transition: transform 0.8s ease, opacity 0.6s ease;
+  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.804);
+}
+
+/* Projects Section */
+.projects {
+  padding: 6rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.projects h2 {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.project-card {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 2rem;
+  border-radius: 1rem;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  cursor: pointer;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.project-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.project-card p {
+  color: #9ca3af;
+  margin-bottom: 1.5rem;
+}
+
+.project-link {
+  color: #3b82f6;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: transform 0.3s ease;
+}
+
+.project-card:hover .project-link {
+  transform: translateX(8px);
+}
+
+/* Contact Section */
+.contact {
+  text-align: center;
+  padding: 6rem 2rem;
+  background: rgba(255, 255, 255, 0.03);
+  overflow-x: hidden;
+}
+
+.contact-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.contact-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-top: 2rem;
+  width: 100%;
+}
+
+.contact-info {
+  flex: 1;
+  padding: 2rem;
+  border-radius: 0.5rem;
+  color: #fff;
+}
+
+.info-card {
+  line-height: 3rem;
+}
+
+.info-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1.3rem;
+  color: #fff;
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+
+.info-item i {
+  font-size: 1.5rem;
+  color: #3b82f6;
+}
+
+.contact-form {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 2rem;
+  border-radius: 0.5rem;
+}
+
+.contact-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  text-align: start;
+  font-size: 1rem;
+  color: #fff;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 0.75rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 0.5rem;
+  color: #fff;
+  font-size: 1rem;
+}
+
+.contact-form textarea {
+  height: 120px;
+}
+
+.contact-form button {
+  padding: 0.75rem;
+  background: #3b82f6;
+  color: #fff;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.contact-form button:hover {
+  background: #2563eb;
+}
+
+.contact-content p {
+  color: #fff;
+  font-size: 0.9rem;
+}
+
+.contact-content h2 {
+  color: #fff;
+  font-size: 2rem;
+}
+
+.form {
+  width: 100%;
+  max-width: 600px;
+  padding: 0 1rem;
+}
+
+.form-group ::placeholder {
+  color: #fff;
+}
+
+.form label {
+  font-size: 1rem;
+  display: flex;
+  padding: 3px;
+}
+
+.input-name {
+  margin-top: 2rem;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.input-name .input-group label {
+  width: 100%;
+  display: flex;
+  padding: 3px;
+  font-size: 1rem;
+}
+
+.input-group {
+  flex: 1 1 calc(50% - 1rem);
+  min-width: 200px;
+}
+
+.form input,
+.form textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.5rem;
+  background-color: rgba(255, 255, 255, 0.05);
+  font-size: 0.8rem;
+  color: #fff;
+  transition: all 0.3s ease;
+}
+
+#message {
+  height: 25vh;
+  margin-bottom: 1rem;
+}
+
+.form button {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1rem;
+  background-color: #3b82f6;
+  color: #fff;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* About Section */
+.about {
+  padding: 6rem 2rem;
+  position: relative;
+  overflow: hidden;
+  opacity: 0;
+  transform: scale(0.8);
+  transition: opacity 0.8s ease, transform 0.8s ease; /* Only animate opacity and scale */
+}
+
+.about.active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Flex layout for the about content */
+.about-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+/* Text content */
+.about-text {
+  margin-left: 60px;
+  max-width: 50%;
+}
+
+.about h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: #fff;
+  text-align: left;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.6s ease, transform 0.6s ease; /* Smooth transition */
+}
+
+.about.active h2 {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.about p {
+  color: #9ca3af;
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  line-height: 1.6;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.about.active p {
+  opacity: 1; /* Fade in when active */
+  transform: translateY(0); /* Reset the translation */
+}
+
+/* Profile Image in About Section */
+.about-photo {
+  cursor: pointer;
+  width: 300px; /* Increased width */
+  height: 400px; /* Increased height */
+  border-radius: 0; /* Remove border-radius to make it square */
+  object-fit: cover;
+  margin: 0 auto 1rem;
+  opacity: 0;
+  transform: scale(0.8);
+  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.804);
+  transition: transform 0.6s ease, opacity 0.6s ease;
+}
+
+.about.active .about-photo {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.about-photo:hover {
+  transition: transform 0.8s ease, opacity 0.6s ease;
+}
+
+/* Initially only show part of the text */
+.short-text {
+  display: block;
+  max-height: 4rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: max-height 0.3s ease;
+}
+
+/* Update the full-text styles with pop animation */
+.full-text {
+  display: block; /* Changed from none to block */
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transform: scale(0.95) translateY(-10px); /* Added scale for pop effect */
+  transition: max-height 0.6s ease, opacity 0.4s ease,
+    transform 0.4s cubic-bezier(0.17, 0.67, 0.83, 0.67); /* Custom bezier for pop */
+  transform-origin: top center; /* Set transform origin for better pop effect */
+}
+
+/* Active state with pop animation */
+.full-text.active {
+  max-height: 200px;
+  opacity: 1;
+  transform: scale(1) translateY(0);
+}
+
+/* Add a subtle pop effect to the button too */
+.read-more-btn {
+  background-color: #3498db;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 1rem;
+  transition: background-color 0.3s,
+    transform 0.3s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+}
+
+.read-more-btn:hover {
+  background-color: #2980b9;
+  transform: scale(1.05);
+}
+
+.read-more-btn:active {
+  transform: scale(0.95);
+}
+
+/* Blogs Section */
+.blogs {
+  padding: 6rem 2rem;
+  background-color: rgba(255, 255, 255, 0.03);
+}
+
+.blogs h2 {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 3rem;
+  color: #fff;
+}
+
+.blog-posts {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.blog-card {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 2rem;
+  border-radius: 1rem;
+  transition: all 0.3s ease;
+  opacity: 0;
+  transform: translateX(-15px);
+  transition: all 0.6s ease-in-out;
+}
+
+.blog-card:hover {
+  transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 20px rgba(59, 130, 246, 0.1);
+}
+
+.blog-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #fff;
+}
+
+.blog-card p {
+  color: #9ca3af;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+.blog-link {
+  color: #3b82f6;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: transform 0.3s ease;
+}
+
+.blog-card:hover .blog-link {
+  transform: translateX(8px);
+}
+
+/* Portfolio Section */
+.portfolio {
+  padding: 6rem 2rem;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.02),
+    rgba(255, 255, 255, 0.04)
+  );
+}
+
+.portfolio h2 {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 3rem;
+  color: #fff;
+}
+
+.portfolio-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  padding: 1rem;
+}
+
+.portfolio-item {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 1rem;
+  padding: 2rem;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: transform 0.6s ease, opacity 0.6s ease;
+}
+
+.portfolio-item::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    45deg,
+    rgba(59, 130, 246, 0.1),
+    rgba(96, 165, 250, 0.1)
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.portfolio-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(59, 130, 246, 0.15);
+  border-color: rgba(59, 130, 246, 0.3);
+}
+
+.portfolio-item:hover::before {
+  opacity: 1;
+}
+
+.portfolio-item h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #fff;
+}
+
+.portfolio-item p {
+  color: #9ca3af;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+.portfolio-link {
+  color: #3b82f6;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 500;
+  transition: transform 0.3s ease;
+}
+
+.portfolio-item:hover .portfolio-link {
+  transform: translateX(8px);
+}
+
+/* footer */
+.footer {
+  background-color: #0f1621;
+  padding: 3rem 2rem 2rem;
+  text-align: center;
+  box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.social-link {
+  color: #fff;
+  font-size: 1.2rem;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.social-link:hover {
+  color: #3b82f6;
+  transform: translateY(-2px);
+}
+
+.projects-section {
+  margin-bottom: 2rem;
+}
+
+.projects-title {
+  color: #9ca3af;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+}
+
+.project-links {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.project-link {
+  color: #fff;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+.project-link:hover {
+  background-color: rgba(59, 130, 246, 0.1);
+  border-color: #3b82f6;
+  color: #3b82f6;
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 2rem;
+}
+
+.footer-bottom h3 {
+  color: #fff;
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.copyright {
+  color: #9ca3af;
+  font-size: 0.9rem;
+  margin-bottom: 0.25rem;
+}
+
+.rights {
+  color: #9ca3af;
+  font-size: 0.9rem;
+}
+
+/* nav-footer */
+hr {
+  width: 100%;
+  margin: 20px 0;
+  border: 0;
+  border-top: 1px solid #333;
+}
+.nav-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.tree-section {
+  background-color: #111827;
+  color: white;
+  padding: 4rem;
+}
+
+#education {
+  background-color: #111827;
+}
+#experience {
+  background-color: #111827;
+}
+.title {
+  font-size: 1.5rem;
+  margin-bottom: 3rem;
+  font-weight: normal;
+}
+
+.timeline {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.timeline::after {
+  content: "";
+  position: absolute;
+  width: 1px;
+  background-color: white;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  margin-left: -1px;
+}
+
+.timeline-item {
+  padding: 10px 40px;
+  position: relative;
+  width: 50%;
+  left: 0;
+  margin-bottom: 2rem;
+}
+
+.timeline-item.right {
+  left: 50%;
+}
+
+.timeline-item::after {
+  content: "";
+  position: absolute;
+  width: 25px;
+  height: 1px;
+  background-color: white;
+  top: 22px;
+  right: 0;
+}
+
+.timeline-item.right::after {
+  left: 0;
+}
+
+.year {
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+
+.content {
+  padding: 0 1rem;
+}
+
+.content p {
+  font-size: 0.8rem;
+  margin: 0.2rem 0;
+  opacity: 0.8;
+}
+
+/* Base styles */
+.tree-section {
+  background-color: #0a0d14;
+  color: #fff;
+  padding: 40px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+h2 {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: normal;
+  margin-bottom: 60px;
+}
+
+/* Toggle Container for light mode and night mode */
+.mode-toggle-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+}
+
+/* Toggle Button */
+.mode-toggle {
+  width: 80px;
+  height: 40px;
+  background-color: var(--toggle-bg, #333); /* Default dark toggle */
+  border: none;
+  border-radius: 20px;
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.mode-toggle .toggle-track {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.toggle-sun,
+.toggle-moon {
+  width: 30px;
+  height: 30px;
+  background-color: #fcd34d; /* Sun color */
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.toggle-moon {
+  background-color: #3b82f6; /* Moon color */
+  transform: translateX(-40px); /* Initially hidden for dark mode */
+}
+
+.light-theme .toggle-sun {
+  transform: translateX(40px); /* Move sun to the right */
+  background-color: #f59e0b; /* Bright yellow sun */
+}
+
+.light-theme .toggle-moon {
+  transform: translateX(0); /* Bring moon back to its default position */
+}
+
+.mode-text {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -24px;
+  color: #ffffff;
+  font-size: 12px;
+  white-space: nowrap;
+  opacity: 0.8;
+}
+
+/* Light Theme Text Color Updates */
+body.light-theme {
+  background-color: #f3f4f6;
+  color: #1f2937;
+}
+
+/* Navigation light theme */
+body.light-theme .navbar {
+  background: rgba(255, 255, 255, 0.95);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+body.light-theme .nav-links a {
+  color: #000;
+}
+/* Cards and sections light theme */
+body.light-theme .project-card,
+body.light-theme .blog-card,
+body.light-theme .portfolio-item {
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+body.light-theme .project-card:hover,
+body.light-theme .blog-card:hover,
+body.light-theme .portfolio-item:hover {
+  background: #ffffff;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  transform: translateY(-5px);
+}
+
+body.light-theme .blogs,
+body.light-theme .contact,
+body.light-theme .portfolio {
+  background: #ffffff;
+}
+body.light-theme .blog-card:hover,
+body.light-theme .portfolio-item:hover {
+  background: rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Text colors light theme */
+body.light-theme h1,
+body.light-theme h2,
+body.light-theme h3 {
+  color: #1f2937;
+}
+
+body.light-theme .hero h1 {
+  color: #1f2937;
+}
+
+body.light-theme p,
+body.light-theme .hero p,
+body.light-theme .about p,
+body.light-theme .portfolio-item p,
+body.light-theme .blog-card p {
+  color: #4b5563;
+}
+
+body.light-theme .contact h2,
+body.light-theme .contact p,
+body.light-theme .form label {
+  color: #1f2937;
+}
+
+body.light-theme .contact {
+  background-color: #edf0f3;
+}
+
+/* Light Theme: Contact Form Inputs and Textarea */
+body.light-theme .contact-form input,
+body.light-theme .contact-form textarea {
+  background-color: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.6);
+  color: #1f2937;
+}
+
+body.light-theme .contact-form {
+  background-color: rgb(0, 0, 0, 0.1);
+  border: 2px solid rgba(0, 0, 0, 0.2);
+}
+
+body.light-theme .contact-form label {
+  color: #1f2937;
+}
+
+body.light-theme .contact-form input::placeholder,
+body.light-theme .contact-form textarea::placeholder {
+  color: #6b7280;
+}
+
+/* Light Theme: Contact Form Button */
+body.light-theme .contact-form button {
+  background: #3b82f6;
+  color: #ffffff;
+  border: none;
+}
+
+body.light-theme .contact-form button:hover {
+  background: #2563eb; /* Darker blue on hover */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+}
+
+/* Footer styles in light mode */
+body.light-theme .footer {
+  background-color: #ffffff;
+  box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.05);
+}
+
+body.light-theme .footer-bottom {
+  border-top: 1px solid rgba(0, 0, 0, 0.762);
+}
+
+body.light-theme .footer h3 {
+  color: #1f2937;
+}
+
+body.light-theme .copyright,
+body.light-theme .rights,
+body.light-theme .projects-title {
+  color: #4b5563;
+}
+
+/* Social links in light mode */
+body.light-theme .social-link {
+  color: #1f2937;
+}
+
+/* Project links in light mode */
+body.light-theme .project-link {
+  color: #1f2937;
+  border: 1px solid rgba(0, 0, 0, 0.37);
+}
+
+/* Mode toggle text in light mode */
+body.light-theme .mode-text {
+  color: #1f2937;
+}
+
+/* Ensure portfolio and blog links stay visible in light mode */
+body.light-theme .portfolio-link,
+body.light-theme .blog-link {
+  color: #3b82f6;
+}
+/* Light Theme Specific Styles */
+body.light-theme .hero {
+  background-color: #f3f4f6;
+}
+
+/* Update text colors for better visibility in light mode */
+body.light-theme .hero h1 {
+  color: #1f2937;
+}
+
+body.light-theme .hero p {
+  color: #4b5563;
+}
+
+/* Fix social icons visibility in light mode */
+body.light-theme .social-icons a i {
+  color: #1f2937; /* Dark color for better visibility */
+  transition: all 0.3s ease;
+}
+
+body.light-theme .social-icons a i:hover {
+  color: #3b82f6; /* Blue color on hover */
+  transform: scale(1.08);
+}
+
+/* Fix button visibility in light mode */
+body.light-theme .btn-secondary {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  color: #1f2937;
+  background: transparent;
+}
+
+body.light-theme .btn-secondary:hover {
+  border-color: #3b82f6;
+  background: rgba(59, 130, 246, 0.1);
+}
+
+body.light-theme .btn-primary {
+  background: #3b82f6;
+  color: white;
+}
+
+body.light-theme .btn-primary:hover {
+  background: #2563eb;
+}
+
+/* Ensure profile photo border is visible */
+body.light-theme .profile-photo {
+  border: 3px solid #3b82f6;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+body.light-theme .profile-photo:hover {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+body.light-theme .menu-btn {
+  color: #000;
+}
+
+body.light-theme .logo {
+  color: #000;
+}
+
+/* Ensure Education and Experience sections are visible in light mode */
+body.light-theme #education,
+body.light-theme #experience {
+  background-color: #ffffff;
+  color: 000;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Styling the timeline items in Education and Experience sections */
+body.light-theme #education .timeline-item,
+body.light-theme #experience .timeline-item {
+  background-color: #ffffff;
+  color: #1f2937;
+  /* border: 1px solid rgba(0, 0, 0, 0.1); */
+}
+
+body.light-theme #education .year,
+body.light-theme #experience .year {
+  color: #000;
+}
+
+/* Ensure content within timeline items is visible */
+body.light-theme #education .content p,
+body.light-theme #experience .content p {
+  color: #000;
+}

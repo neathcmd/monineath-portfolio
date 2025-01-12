@@ -1,0 +1,151 @@
+/* Initial state for sliding in from left and right */
+.contact-info,
+.contact-form {
+  opacity: 0;
+  transform: translateX(100%); /* or translateX(-100%) depending on direction */
+  transition: transform 0.6s ease-out, opacity 0.6s ease-out;
+}
+
+/* Adjust animation for small screens */
+@media (max-width: 600px) {
+  .contact-info,
+  .contact-form {
+    transform: translateX(50%); /* or translateX(-50%) depending on direction */
+  }
+}
+
+.contact-info.visible,
+.contact-form.visible {
+  opacity: 1;
+  transform: translateX(0); /* Slide into place */
+}
+
+/* When the elements are visible in the viewport */
+.contact-info.visible {
+  opacity: 1;
+  transform: translateX(0); /* Slides in from the left */
+}
+
+.contact-form.visible {
+  opacity: 1;
+  transform: translateX(0); /* Slides in from the right */
+}
+
+.contact-info {
+  opacity: 0;
+  transform: translateX(-100%);
+  transition: transform 0.6s ease-out, opacity 0.6s ease-out;
+}
+
+.contact-form {
+  opacity: 0;
+  transform: translateX(100%);
+  transition: transform 0.6s ease-out, opacity 0.6s ease-out;
+}
+
+.contact-info.visible,
+.contact-form.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Base animation state for all timeline items */
+.timeline-item {
+  opacity: 0;
+  transform: translateX(0); /* Default to no horizontal translation */
+  transition: transform 0.5s ease-out, opacity 0.5s ease-out;
+}
+
+/* Top item slides in from the left */
+.timeline-item#top {
+  transform: translateX(-100px); /* Initially offset to the left */
+}
+
+/* Middle item slides in from the right */
+.timeline-item#middle {
+  transform: translateX(100px); /* Initially offset to the right */
+}
+
+/* Bottom item slides in from the left */
+.timeline-item#bottom {
+  transform: translateX(-100px); /* Initially offset to the left */
+}
+
+/* When in view - elements will slide in */
+.timeline-item.visible {
+  opacity: 1;
+  transform: translateX(0); /* Slide to original position */
+}
+
+/* Default animation state for all items */
+#top,
+#middle,
+#bottom {
+  opacity: 0;
+  transform: translateX(0); /* Default transform state */
+  transition: transform 0.5s ease-out, opacity 0.5s ease-out;
+}
+
+/* Slide from the left for #top */
+#top {
+  transform: translateX(-100px); /* Initially offset to the left */
+}
+
+/* Slide from the right for #middle */
+#middle {
+  transform: translateX(100px); /* Initially offset to the right */
+}
+
+/* Slide from the left for #bottom */
+#bottom {
+  transform: translateX(-100px); /* Initially offset to the left */
+}
+
+/* When in view - apply animation */
+#top.visible,
+#middle.visible,
+#bottom.visible {
+  opacity: 1;
+  transform: translateX(0); /* Reset transform to original position */
+}
+
+/* Default animation state for all items */
+#top,
+#middle,
+#bottom,
+#top-content,
+#middle-content,
+#bottom-content {
+  opacity: 0;
+  transform: translateX(0); /* Default transform state */
+  transition: transform 0.5s ease-out, opacity 0.5s ease-out;
+}
+
+/* Slide from the left for #top and #top-content */
+#top,
+#top-content {
+  transform: translateX(-100px); /* Initially offset to the left */
+}
+
+/* Slide from the right for #middle and #middle-content */
+#middle,
+#middle-content {
+  transform: translateX(100px); /* Initially offset to the right */
+}
+
+/* Slide from the left for #bottom and #bottom-content */
+#bottom,
+#bottom-content {
+  transform: translateX(-100px); /* Initially offset to the left */
+}
+
+/* When in view - apply animation */
+#top.visible,
+#middle.visible,
+#bottom.visible,
+#top-content.visible,
+#middle-content.visible,
+#bottom-content.visible {
+  opacity: 1;
+  transform: translateX(0); /* Reset transform to original position */
+}
