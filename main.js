@@ -224,6 +224,18 @@ window.addEventListener("scroll", () => {
   document.querySelector(".progress-bar").style.width = `${progress}%`;
 });
 
+//loading screen
+window.addEventListener("load", () => {
+  const loadingScreen = document.getElementById("loading-screen");
+  if (loadingScreen) {
+    loadingScreen.style.transition = "opacity 1.5s ease"; // Slower transition duration
+    loadingScreen.style.opacity = "0";
+    setTimeout(() => {
+      loadingScreen.style.display = "none";
+    }, 1500); // Adjusted timeout to match the transition duration
+  }
+});
+
 // Input form validation
 const form = document.querySelector("form");
 if (form) {
