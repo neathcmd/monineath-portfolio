@@ -62,7 +62,7 @@ if (aboutSection && aboutContent) {
       if (aboutText) {
         aboutText.style.opacity = "1";
         aboutText.style.transform = "translateX(0)"; // Slide in from the left
-        aboutText.style.transition = "transform 1.3s ease, opacity 0.6s ease";
+        aboutText.style.transition = "transform 0.4s ease, opacity 0.2s ease";
       }
 
       // About photo animation
@@ -70,7 +70,7 @@ if (aboutSection && aboutContent) {
       if (aboutPhoto) {
         aboutPhoto.style.opacity = "1";
         aboutPhoto.style.transform = "translateX(0)"; // Slide in from the right
-        aboutPhoto.style.transition = "transform 1.3s ease, opacity 0.6s ease";
+        aboutPhoto.style.transition = "transform 0.4s ease, opacity 0.2s ease";
       }
     },
     (element) => {
@@ -165,6 +165,28 @@ setupObserver(
   }
 );
 
+//blog button function
+document.querySelectorAll(".blog-link").forEach((button) => {
+  button.addEventListener("click", function () {
+    const card = this.closest(".blog-card");
+    const hiddenContent = card.querySelector(".hidden-content");
+
+    if (hiddenContent.classList.contains("show")) {
+      hiddenContent.classList.remove("show");
+      this.textContent = "Read More →";
+      // Smooth scroll to the top of the card
+      card.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    } else {
+      hiddenContent.classList.add("show");
+      this.textContent = "Read Less ←";
+      // After expanding, scroll the new content into view
+      setTimeout(() => {
+        hiddenContent.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      }, 100);
+    }
+  });
+});
+
 // Contact Section animation
 setupObserver(
   ".contact-info",
@@ -172,12 +194,14 @@ setupObserver(
     element.classList.add("visible");
     element.style.opacity = "1";
     element.style.transform = "translateX(0)";
+    element.style.transition = "transform 0.3s ease, opacity 0.3s ease"; // Faster animation
   },
   (element) => {
     element.classList.remove("visible");
     element.style.opacity = "0";
     element.style.transform =
       window.innerWidth <= 768 ? "translateX(-100px)" : "translateX(-460px)";
+    element.style.transition = "transform 0.3s ease, opacity 0.3s ease"; // Faster animation
   }
 );
 
@@ -187,12 +211,14 @@ setupObserver(
     element.classList.add("visible");
     element.style.opacity = "1";
     element.style.transform = "translateX(0)";
+    element.style.transition = "transform 0.3s ease, opacity 0.3s ease"; // Faster animation
   },
   (element) => {
     element.classList.remove("visible");
     element.style.opacity = "0";
     element.style.transform =
       window.innerWidth <= 768 ? "translateX(100px)" : "translateX(460px)";
+    element.style.transition = "transform 0.3s ease, opacity 0.3s ease"; // Faster animation
   }
 );
 
@@ -222,6 +248,18 @@ window.addEventListener("scroll", () => {
     document.documentElement.scrollHeight - window.innerHeight;
   const progress = (window.scrollY / totalHeight) * 100;
   document.querySelector(".progress-bar").style.width = `${progress}%`;
+});
+
+//loading screen
+window.addEventListener("load", () => {
+  const loadingScreen = document.getElementById("loading-screen");
+  if (loadingScreen) {
+    loadingScreen.style.transition = "opacity 1.5s ease"; // Slower transition duration
+    loadingScreen.style.opacity = "0";
+    setTimeout(() => {
+      loadingScreen.style.display = "none";
+    }, 1500); // Adjusted timeout to match the transition duration
+  }
 });
 
 // Input form validation
@@ -255,13 +293,13 @@ document.addEventListener("DOMContentLoaded", function () {
         skillItems.forEach((item, index) => {
           if (entry.isIntersecting) {
             // When entering viewport
-            item.style.animation = `fadeInUp 0.6s ease forwards ${
-              index * 0.2
+            item.style.animation = `fadeInUp 0.3s ease forwards ${
+              index * 0.1
             }s`;
           } else {
             // When leaving viewport
-            item.style.animation = `fadeOutDown 0.6s ease forwards ${
-              (skillItems.length - 1 - index) * 0.2
+            item.style.animation = `fadeOutDown 0.3s ease forwards ${
+              (skillItems.length - 1 - index) * 0.1
             }s`;
           }
         });
@@ -357,16 +395,4 @@ document.addEventListener("DOMContentLoaded", function () {
   // Observe each timeline item
   const timelineItems = document.querySelectorAll(".timeline-item");
   timelineItems.forEach((item) => observer.observe(item));
-});
-
-//loading screen
-window.addEventListener("load", () => {
-  const loadingScreen = document.getElementById("loading-screen");
-  if (loadingScreen) {
-    loadingScreen.style.transition = "opacity 1.5s ease"; // Slower transition duration
-    loadingScreen.style.opacity = "0";
-    setTimeout(() => {
-      loadingScreen.style.display = "none";
-    }, 1500); // Adjusted timeout to match the transition duration
-  }
 });
